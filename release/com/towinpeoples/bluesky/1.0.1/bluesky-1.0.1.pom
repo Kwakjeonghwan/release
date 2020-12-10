@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.towinpeoples</groupId>
+    <artifactId>bluesky</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.1</version>
+    <modules>
+        <module>bluesky-core</module>
+        <module>bluesky-system</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <private.maven.path>/Users/jeonghwankwak/IdeaProjects/repositoryTest</private.maven.path>
+    </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Temporary Staging Repository</name>
+            <url>file://${private.maven.path}/release</url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+                <configuration>
+                    <altDeploymentRepository>internal.repo::default::file://${private.maven.path}/release
+                    </altDeploymentRepository>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
